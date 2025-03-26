@@ -1,0 +1,100 @@
+class Vehicle {
+    protected String fuelType;
+    protected int mileage;
+
+    public Vehicle(String fuelType, int mileage) {
+        this.fuelType = fuelType;
+        this.mileage = mileage;
+    }
+
+    public void start() {
+        System.out.println("Vehicle is starting...");
+    }
+
+    public void stop() {
+        System.out.println("Vehicle is stopping...");
+    }
+
+    public void accelerate() {
+        System.out.println("Vehicle is accelerating...");
+    }
+
+    public void displayInfo() {
+        System.out.println("Fuel Type: " + fuelType + ", Mileage: " + mileage);
+    }
+}
+
+
+class Car extends Vehicle {
+    private int doors;
+
+    public Car(String fuelType, int mileage, int doors) {
+        super(fuelType, mileage);
+        this.doors = doors;
+    }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Number of Doors: " + doors);
+    }
+}
+
+// Subclass: Truck
+class Truck extends Vehicle {
+    private int loadCapacity;
+
+    public Truck(String fuelType, int mileage, int loadCapacity) {
+        super(fuelType, mileage);
+        this.loadCapacity = loadCapacity;
+    }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Load Capacity: " + loadCapacity + " tons");
+    }
+}
+
+// Subclass: Motorcycle
+class Motorcycle extends Vehicle {
+    private boolean hasSidecar;
+
+    public Motorcycle(String fuelType, int mileage, boolean hasSidecar) {
+        super(fuelType, mileage);
+        this.hasSidecar = hasSidecar;
+    }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Has Sidecar: " + (hasSidecar ? "Yes" : "No"));
+    }
+}
+
+// Tester class
+ class Tester {
+    public static void main(String[] args) {
+        Car car = new Car("Gasoline", 15000, 4);
+        Truck truck = new Truck("Diesel", 8000, 10);
+        Motorcycle motorcycle = new Motorcycle("Gasoline", 5000, false);
+
+        System.out.println("Car Info:");
+        car.displayInfo();
+        car.start();
+        car.accelerate();
+        car.stop();
+
+        System.out.println("\nTruck Info:");
+        truck.displayInfo();
+        truck.start();
+        truck.accelerate();
+        truck.stop();
+
+        System.out.println("\nMotorcycle Info:");
+        motorcycle.displayInfo();
+        motorcycle.start();
+        motorcycle.accelerate();
+        motorcycle.stop();
+    }
+}
